@@ -1,0 +1,13 @@
+<!-- A made-up 3-joint arm for trying the tools. This is NOT a Unitree model. Use the model file that ships with your simulator. -->
+<mujoco model="toy_arm">
+  <compiler angle="radian"/>
+  <default><joint range="-1.5 1.5"/></default>
+  <worldbody>
+    <body name="base">
+      <joint name="shoulder" range="-2.0 2.0"/>
+      <body name="upper"><joint name="elbow" range="0 2.5"/>
+        <body name="lower"><joint name="wrist"/></body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

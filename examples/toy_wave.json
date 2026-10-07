@@ -1,0 +1,9 @@
+{
+  "interpolation": "smoothstep",
+  "keyframes": [
+    {"t": 0.0, "pose": {"shoulder": 0.0, "elbow": 0.5, "wrist": 0.0}},
+    {"t": 2.0, "pose": {"shoulder": 0.8, "elbow": 1.2, "wrist": 0.4}},
+    {"t": 4.0, "pose": {"shoulder": 0.8, "elbow": 1.2, "wrist": -0.4}},
+    {"t": 6.0, "pose": {"shoulder": 0.0, "elbow": 0.5, "wrist": 0.0}}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "_note": "Joint-space example for the left arm. Poses were chosen only to sit inside the ranges and speed policy. The direction of each motion is NOT checked, and nothing here has been run on a simulator or a robot.",
+  "interpolation": "smoothstep",
+  "keyframes": [
+    {"t": 0.0, "pose": {"left_shoulder_pitch_joint": 0.0,  "left_shoulder_roll_joint": 0.2, "left_elbow_joint": 0.5, "left_wrist_roll_joint": 0.0}},
+    {"t": 3.0, "pose": {"left_shoulder_pitch_joint": -0.6, "left_shoulder_roll_joint": 0.8, "left_elbow_joint": 1.2, "left_wrist_roll_joint": 0.5}},
+    {"t": 6.0, "pose": {"left_shoulder_pitch_joint": 0.0,  "left_shoulder_roll_joint": 0.2, "left_elbow_joint": 0.5, "left_wrist_roll_joint": 0.0}}
+  ]
+}
