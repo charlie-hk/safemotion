@@ -1,10 +1,10 @@
-# safemotion
+[README.md](https://github.com/user-attachments/files/33192916/README.md)# safemotion
 
 [![tests](https://github.com/charlie-hk/safemotion/actions/workflows/tests.yml/badge.svg)](https://github.com/charlie-hk/safemotion/actions/workflows/tests.yml)
 
 (c) 2026 Ali Amini. Unofficial and **not affiliated with Unitree Robotics**. Unitree, G1 and H1 are trademarks of their owners.
 
-Pre-flight and safety tools for robot motion, built **simulation first**. Pure Python, no dependencies. Needs Python 3.10 or newer (developed on 3.12 and run by the author on Windows; the included GitHub Actions workflow also runs the tests on Linux and Windows with 3.10 and 3.12).
+Pre-flight and safety tools for humanoid robot motion (oriented to Unitree G1/H1), built **simulation first**. Pure Python, no dependencies. Needs Python 3.10 or newer (developed on 3.12 and run by the author on Windows; the included GitHub Actions workflow also runs the tests on Linux and Windows with 3.10 and 3.12).
 
 What it gives you:
 
@@ -32,6 +32,17 @@ python -m safemotion preflight path\to\unitree_robots\g1\g1_29dof.xml examples\g
 
 The example sequence only proves the tools run on real joint names. Its poses are arbitrary, inside the ranges, and have never been run on a simulator or a robot.
 
+### H1
+
+The H1 model file (`unitree_robots/h1/h1.xml`) contains one joint, `not_use_joint`, that has no range. By design the reader refuses it
+instead of guessing, so exclude it by name:
+
+```
+python -m safemotion limits path\to\unitree_robots\h1\h1.xml --exclude "not_use_joint"
+```
+
+This prints the 19 joints with their ranges. Without `--exclude` you get error `SM-E16` naming that joint.
+
 ## Try it (no robot, no simulator needed)
 
 ```
@@ -57,8 +68,9 @@ print(result)
 
 | Checked | How |
 |---|---|
-| The logic (limits, filter, sequences, runner) | 53 automated tests, and 30 deliberate code breakages (limit removed, check skipped, and so on), each caught by a test |
-| Real Unitree model files | **G1 29-DoF: the model file from the unitree_mujoco repository parses (29 joints, left/right ranges mirror each other), checked by the author on 2026-10-07.** H1 and the 23-DoF G1: not yet reported. Run `python -m safemotion limits path/to/robot.xml` on your own model and report problems |
+| The logic (limits, filter, sequences, runner) | 56 automated tests. 30 deliberate code breakages (limit removed, check skipped, and so on) were each caught by a test, checked when there were 53 tests |
+| Real Unitree model files | **G1 29-DoF: the model file from the unitree_mujoco repository parses (29 joints, left/right ranges mirror each other), checked by the author on 2026-10-07. H1: parses with `--exclude "not_use_joint"` (19 joints), checked by the author on 2026-10-08.** The 23-DoF G1 and other models: not yet reported. Run `python -m safemotion limits path/to/robot.xml` on your own model and report problems |
+| Unitree firmware | **not tested** against any firmware version (including 1.5.x). Ranges come from the published model file and may differ from the limits the robot's firmware enforces |
 | A physics simulator | **not run** by the author |
 | A real robot | **never** |
 
@@ -82,10 +94,17 @@ debug mode first so the built-in motion controller does not fight your commands)
 the defaults here as conservative starting points, not as a guarantee. The tracking-error threshold (20 percent of a joint's range by default)
 is deliberately loose; tighten it for your robot. A passing pre-flight means the sequence respects a policy; it does not make a motion safe.
 
+## Related projects
+
+Other open-source projects touch the same area, for example `inspect-robots-unitree-g1` (preflight checks and per-joint speed caps for G1 arms),
+`unitree_launcher` (a deployment stack with a safety controller and emergency stop) and `unitree-sdk2-mcp` (joint-limit checks before commands).
+The author has not compared them in depth. This library's focus: no dependencies, joint limits read straight from the model file with ambiguous
+constructs refused, speed and acceleration limits against real elapsed time, and a latched emergency stop.
+
 ## Tests
 
-`python -m unittest discover -s tests`: 53 tests. They include a seeded random session that checks no command ever leaves the allowed band or exceeds the speed limit.
+`python -m unittest discover -s tests`: 56 tests. They include a seeded random session that checks no command ever leaves the allowed band or exceeds the speed limit.
 
 ## Licence
 
-None granted yet (see `NOTICE`). All rights reserved by the author until a licence file is added.
+MIT, see `LICENSE`.
