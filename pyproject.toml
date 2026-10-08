@@ -1,9 +1,12 @@
 [project]
 name = "safemotion"
 version = "0.1.0"
-description = "Unofficial pre-flight and safety tools for robot motion, simulation first. No dependencies."
+description = "Unofficial pre-flight and safety tools for humanoid robot motion (oriented to Unitree G1/H1), simulation first. No dependencies."
+readme = "README.md"
+license = { text = "MIT" }
 requires-python = ">=3.10"
 authors = [{ name = "Ali Amini" }]
+keywords = ["robotics", "humanoid", "safety", "unitree", "mujoco"]
 dependencies = []
 
 [build-system]
