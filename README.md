@@ -1,6 +1,6 @@
 [README.md](https://github.com/user-attachments/files/33192916/README.md)
 
-# safemotion
+# safemotion: safety layer for Unitree G1/H1 humanoid joint motion (unofficial)
 
 [![tests](https://github.com/charlie-hk/safemotion/actions/workflows/tests.yml/badge.svg)](https://github.com/charlie-hk/safemotion/actions/workflows/tests.yml)
 
