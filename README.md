@@ -1,5 +1,7 @@
 # safemotion
 
+[![tests](https://github.com/charlie-hk/safemotion/actions/workflows/tests.yml/badge.svg)](https://github.com/charlie-hk/safemotion/actions/workflows/tests.yml)
+
 (c) 2026 Ali Amini. Unofficial and **not affiliated with Unitree Robotics**. Unitree, G1 and H1 are trademarks of their owners.
 
 Pre-flight and safety tools for robot motion, built **simulation first**. Pure Python, no dependencies. Needs Python 3.10 or newer (developed on 3.12 and run by the author on Windows; the included GitHub Actions workflow also runs the tests on Linux and Windows with 3.10 and 3.12).
