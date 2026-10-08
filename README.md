@@ -1,4 +1,6 @@
-[README.md](https://github.com/user-attachments/files/33192916/README.md)# safemotion
+[README.md](https://github.com/user-attachments/files/33192916/README.md)
+
+# safemotion
 
 [![tests](https://github.com/charlie-hk/safemotion/actions/workflows/tests.yml/badge.svg)](https://github.com/charlie-hk/safemotion/actions/workflows/tests.yml)
 
